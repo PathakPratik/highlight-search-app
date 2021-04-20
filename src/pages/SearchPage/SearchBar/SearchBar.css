@@ -1,6 +1,6 @@
 .Search {
   max-width: 400px;
-  margin: 0 auto;
+  margin: 1rem auto;
   position: relative;
   display: flex;
 }
@@ -21,4 +21,8 @@
   padding: 5px;
   border-radius: 5px 0 0 5px;
   outline: none;
+}
+.SearchInput:focus{
+  border: 3px solid darkblue;
+  caret-color: darkblue;
 }

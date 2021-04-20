@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "./Card";
 import SearchBar from "./SearchBar";
-import cardData from "./cardData.json";
+import dataRaw from "./CardDataset.json";
+
+const {
+  sections: [{ assets: data }],
+} = dataRaw;
+
+export type MusicData = typeof data;
 
 const SearchPage = () => {
-  const {
-    sections: [{ assets: data }],
-  } = cardData;
+  const [musicData, setMusicData] = useState<MusicData>(data);
 
   return (
-    <div style={{ padding: "10px" }}>
-      <SearchBar />
-      {data.map(
+    <div style={{padding: '1rem'}}>
+      <SearchBar
+        data={data}
+        setMusicData={setMusicData}
+        placeholder="start typing..."
+      />
+      {musicData.map(
         ({ title, description, supplement_information: duration }, i) => (
           <Card
             key={i}

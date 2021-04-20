@@ -17,9 +17,16 @@
 .Details {
   flex-basis: 70%;
 }
+
+@media screen and (max-width: 480px) {
+  .Img {
+    zoom: 0.4;
+  }
+}
 .Img {
   height: 100px;
 }
+
 .Title {
   font-size: 1rem;
 }
@@ -35,4 +42,11 @@
 }
 .Link {
   font-size: 14px;
+}
+.Lyrics {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+.Play {
+  font-size: 0.9rem;
 }

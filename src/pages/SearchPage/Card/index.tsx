@@ -34,10 +34,10 @@ const Card: FC<CardProps> = ({
           className="Description"
           dangerouslySetInnerHTML={{ __html: description }}
         />
-        <div>
+        <div className="Play">
           <u>Play Vocal</u>
         </div>
-        <div style={{ marginTop: "1rem" }}>
+        <div className="Lyrics">
           <u>Lyrics (PDF)</u>
         </div>
       </div>
