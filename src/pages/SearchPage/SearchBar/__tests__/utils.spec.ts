@@ -40,7 +40,7 @@ describe("Search functionality", () => {
   });
 
   test("should search in title field", () => {
-    const result = search(data, "holy", "title");
+    const result = search(data, "holy", ["title"]);
     expect(result.some((each) => each.title === HighlightedTitleHoly)).toBe(
       true
     );
@@ -50,14 +50,14 @@ describe("Search functionality", () => {
   });
 
   test("should search in description field", () => {
-    const result = search(data, "hou", "description");
+    const result = search(data, "hou", ["description"]);
     expect(
       result.some((each) => each.title === "All Who Enter Here are strong")
     ).toBe(true);
   });
 
   test("should search in keywords field", () => {
-    const result = search(data, "holy", "keywords");
+    const result = search(data, "holy", ["keywords"]);
     expect(result.some((each) => each.title === "Be With Us, Mary")).toBe(true);
   });
 

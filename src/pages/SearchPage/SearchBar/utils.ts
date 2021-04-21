@@ -2,19 +2,15 @@ import { MusicData } from "../index";
 
 const Options = ["title", "description", "keywords"] as const;
 
-type Option = typeof Options[number] | "all";
-
-const getSearchKeys = (option: Option) =>
-  option === "all" ? Options : [option];
+export type Option = Array<typeof Options[number]>;
 
 const HtmlSanitizeRe = /<\/?[^>]+(>|$)/g;
 
 export const search = (
   data: MusicData,
   term: string,
-  option: Option = "all"
+  keys: Option = ["title", "description", "keywords"]
 ): MusicData => {
-  const keys = getSearchKeys(option);
   const searchTerm = term.toLowerCase().trim().split(" ");
 
   if (term === "") return data;
@@ -36,7 +32,7 @@ export const search = (
 const highlight = (
   filteredData: MusicData,
   terms: Array<string>,
-  keys: ReturnType<typeof getSearchKeys>
+  keys: Option
 ): MusicData => {
   const replacement = "<span class=HighlightText>$1</span>";
 
