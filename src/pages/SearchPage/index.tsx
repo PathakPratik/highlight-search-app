@@ -13,7 +13,7 @@ const SearchPage = () => {
   const [musicData, setMusicData] = useState<MusicData>(data);
 
   return (
-    <div style={{padding: '1rem'}}>
+    <div style={{ padding: "1rem" }}>
       <SearchBar
         data={data}
         setMusicData={setMusicData}
@@ -24,8 +24,8 @@ const SearchPage = () => {
           <Card
             key={i}
             title={title}
-            description={description[0]}
-            duration={duration[0]}
+            description={description ? description[0] : ""}
+            duration={duration ? duration[0] : ""}
           />
         )
       )}

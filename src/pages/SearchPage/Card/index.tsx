@@ -24,7 +24,7 @@ const Card: FC<CardProps> = ({
       <div className="Details">
         <div className="Header">
           <div className="Title">
-            <b>{title}</b>
+            <b dangerouslySetInnerHTML={{ __html: title }} />
           </div>
         </div>
         <div className="Duration">

@@ -50,3 +50,6 @@
 .Play {
   font-size: 0.9rem;
 }
+.HighlightText {
+  background-color: yellow;
+}
