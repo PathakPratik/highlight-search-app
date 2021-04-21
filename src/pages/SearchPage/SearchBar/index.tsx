@@ -23,8 +23,13 @@ type OnChange = (
 
 const onChange: OnChange = (e, data, setMusicData) => {
   const term = e.target.value;
-  const searchResult = search(data, term);
-  setMusicData(searchResult);
+  if (term !== "") {
+    const searchCopy = JSON.parse(JSON.stringify(data));
+    const searchResult = search(searchCopy, term.trim());
+    setMusicData(searchResult);
+  } else {
+    setMusicData(data);
+  }
 };
 
 const SearchBar: FC<SearchBarProps> = ({ placeholder, data, setMusicData }) => {

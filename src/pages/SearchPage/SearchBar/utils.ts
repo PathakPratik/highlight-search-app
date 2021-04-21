@@ -15,49 +15,61 @@ export const search = (
   option: Option = "all"
 ): MusicData => {
   const keys = getSearchKeys(option);
+  const searchTerm = term.toLowerCase().trim().split(" ");
 
-  const cleanHighlight = highlight(data, term, keys, true);
+  if (term === "") return data;
 
-  if (term === "") return cleanHighlight;
-
-  const searchTerm = term.toLowerCase();
-
-  const filteredData = cleanHighlight.filter((row) => {
+  const filteredData = data.filter((row) => {
     return keys.some((key) => {
       const currSearch = row[key]
         .toString()
         .replace(HtmlSanitizeRe, "")
         .toLowerCase();
 
-      return currSearch.includes(searchTerm);
+      return searchTerm.some((each) => currSearch.includes(each));
     });
   });
 
-  return highlight(filteredData, term, keys);
+  return highlight(filteredData, searchTerm, keys);
 };
 
 const highlight = (
   filteredData: MusicData,
-  term: string,
-  keys: ReturnType<typeof getSearchKeys>,
-  remove = false
+  terms: Array<string>,
+  keys: ReturnType<typeof getSearchKeys>
 ): MusicData => {
-  const re = remove
-    ? new RegExp(HtmlSanitizeRe)
-    : new RegExp("(" + term + ")", "gi");
-  const replacement = remove ? "" : "<span class=HighlightText>$1</span>";
+  const replacement = "<span class=HighlightText>$1</span>";
 
   const highlightedData = filteredData.map((row) => {
     let resRow = row;
     keys.forEach((key) => {
       if (key === "title") {
-        resRow[key] = row[key].replace(re, replacement);
+        resRow[key] = replaceWithRegex(
+          row[key],
+          getHighLightRegEx(terms),
+          replacement
+        );
       } else {
-        resRow[key][0] = row[key][0].replace(re, replacement);
+        resRow[key][0] = replaceWithRegex(
+          row[key][0],
+          getHighLightRegEx(terms),
+          replacement
+        );
       }
     });
     return resRow;
   });
 
   return highlightedData;
+};
+
+const getHighLightRegEx = (terms: Array<string>) =>
+  new RegExp("(" + terms.join("|") + ")", "gi");
+
+const replaceWithRegex = (
+  value: string,
+  re: ReturnType<typeof getHighLightRegEx>,
+  replacement: string
+) => {
+  return value.replace(re, replacement);
 };
