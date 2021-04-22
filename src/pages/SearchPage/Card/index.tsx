@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-// import { Search as SearchIcon } from '../Icons';
 import "./Card.css";
 
 type CardProps = {
@@ -10,8 +9,10 @@ type CardProps = {
   keywords?: string;
 };
 
+const imgUrl = process.env.PUBLIC_URL + '/images/music.webp';
+
 const Card: FC<CardProps> = ({
-  image = "/highlight-search-app/images/music.webp",
+  image = imgUrl,
   title,
   description,
   duration,
