@@ -2,7 +2,17 @@
   padding: 1rem;
 }
 .InputsWrap {
-  /* display: flex; */
   margin: 1rem auto;
   width: 20rem;
+}
+@media screen and (min-width: 480px) {
+  .InputsWrap {
+    display: flex;
+    width: 35rem;
+  }
+}
+@media screen and (min-width: 480px) {
+  .OptionSelection {
+    width: 10rem;
+  }
 }

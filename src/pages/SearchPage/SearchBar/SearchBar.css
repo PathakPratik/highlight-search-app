@@ -1,14 +1,24 @@
 .Search {
   max-width: 400px;
-  margin-left: 0.3rem;
   position: relative;
   display: flex;
+}
+@media screen and (max-width: 480px) {
+  .Search {
+    margin-top: 0.5rem;
+  }
+}
+@media screen and (min-width: 480px) {
+  .Search {
+    margin-left: 0.3rem;
+    width: 45rem;
+  }
 }
 .SearchSpan {
   width: 15%;
   border: 1px solid lightgrey;
   background: lightgrey;
-  padding-top: 4px;
+  padding-top: 0.4rem;
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;

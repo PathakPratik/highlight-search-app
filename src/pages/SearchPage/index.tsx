@@ -27,6 +27,7 @@ const SearchPage = () => {
     <div className="Container">
       <div className="InputsWrap">
         <OptionSelection
+          className="OptionSelection"
           overrideStrings={{ allItemsAreSelected: "All" }}
           disableSearch
           options={options}
