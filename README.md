@@ -2,7 +2,7 @@
 
 To run the project locally you can run:
 
-** npm install ** followed by ** npm start **
+**npm install** followed by **npm start**
 
 ## Screenshot
 
