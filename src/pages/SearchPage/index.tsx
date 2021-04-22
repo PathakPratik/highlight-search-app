@@ -22,7 +22,7 @@ const SearchPage = () => {
   const [option, setOption] = useState<any>(options);
 
   const optionArr = option.map((each: typeof options[number]) => each.value);
-  console.log(optionArr);
+  
   return (
     <div className="Container">
       <div className="InputsWrap">

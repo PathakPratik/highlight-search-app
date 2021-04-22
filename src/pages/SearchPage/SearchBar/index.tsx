@@ -10,7 +10,7 @@ type SetMusicData = React.Dispatch<
   React.SetStateAction<SearchBarProps["data"]>
 >;
 
-type SearchBarProps = {
+export type SearchBarProps = {
   placeholder?: string;
   data: MusicData;
   setMusicData: SetMusicData;
