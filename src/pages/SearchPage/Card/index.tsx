@@ -11,7 +11,7 @@ type CardProps = {
 };
 
 const Card: FC<CardProps> = ({
-  image = "/images/music.webp",
+  image = "highlight-search-app/images/music.webp",
   title,
   description,
   duration,
